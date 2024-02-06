@@ -1,0 +1,124 @@
+.card {
+    background-color: #fff; /* Warna latar card */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #3498db; /* Warna teks pada card */
+  }
+
+.container div.row.justify-content-center{
+    width: 25%;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.card-header{
+    text-align: center;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+form label{
+    font-size: 20px;
+}
+
+.card-body{
+    margin-top: 25px;
+}
+
+form .row{
+    margin-top: 10px;
+}
+
+form input{
+    width: 100%;
+    height: 30px;
+    border-radius: 0.4em;
+    margin-top: 5px;
+    border-color: #3498db;
+}
+
+form input:focus{
+    border-color: #2980b9;
+}
+
+.form-check{
+    display: flex;
+    flex-direction: row;
+    line-height: 40px;
+}
+
+.form-check-input{
+    width: 25px;
+    margin-left: 0;
+}
+
+.form-check-label{
+    margin-left: 10px;
+}
+
+.form-check-input:hover, .form-check-label:hover, .form-check:hover{
+    cursor: pointer;
+}
+
+.btn-primary{
+    width: 100%;
+    border-radius: 0.4em;
+    background-color: #3498db;
+    color: #ffffff;
+}
+
+.btn-no-password{
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+    width: 100%;
+}
+
+.success-msg, .invalid-feedback{
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.error-msg{
+    color: #c90000;
+}
+
+
+.input-file-trigger{
+    display: block;
+    padding: 14px 45px;
+    background: #3498db;
+    color: #fff;
+    font-size: 20px;
+    transition: all .4s;
+    cursor: pointer;
+    text-align: center;
+}
+
+.input-file{
+    position: absolute;
+    top: 0; left: 0;
+    width: 225px;
+    opacity: 0;
+    padding: 14px 0;
+    cursor: pointer;
+    display: none;
+}
+
+.profile-image{
+    width: 150px;
+    height: 150px;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 25px;
+}
+
+.profile-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

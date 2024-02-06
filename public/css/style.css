@@ -1,0 +1,160 @@
+body{
+    padding-bottom: 75px;
+}
+
+.container{
+    margin-top: 75px;
+    width: 100%;
+}
+
+.container.home .container-middle{
+    width: 50%;
+}
+
+.container-middle{
+    width: 75%;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding-bottom: 50px;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: auto;
+    margin-top: 25px;
+}
+
+form input, form textarea, form select{
+    width: 100%;
+    height: 30px;
+    border-radius: 0.4em;
+    margin-top: 5px;
+    border-color: #3498db;
+}
+
+form input:focus{
+    border-color: #2980b9;
+}
+
+form label{
+    color: #3498db;
+    font-size: 20px;
+}
+
+.card-header{
+    width: 80%;
+    margin: auto;
+    font-size: 26px;
+    padding-top: 25px;
+    font-weight: bold;
+    color: #3498db;
+}
+
+.col-md-6{
+    width: 100%;
+}
+
+.row-item, .row-item-title{
+    width: 28%;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.row-item-title{
+    width: 64%;
+}
+
+.container-date .bloc-date, .container-date .bloc-time{
+    width: 50%;
+}
+
+.container-date{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.container-date input{
+    width: 80%;
+}
+
+.container-date .last-input, .container-date .last-label{
+    margin-left: 20%;
+}
+
+.row-textarea{
+    width: 100%;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+form textarea{
+    height: 150px;
+}
+
+.form-submit{
+    margin: auto;
+    width: 45%;
+}
+
+.form-submit button{
+    width: 100%;
+    border-radius: 0.4em;
+    background-color: #3498db;
+    color: #ffffff;
+}
+
+.bloc-activity{
+    font-size: 20px;
+    background-color: #fff;
+}
+
+.bloc-activity div{
+    margin-top: 5px;
+}
+
+.bloc-activity .activity-util{
+    font-size: 16px;
+}
+
+.bloc-activity .activity-name a{
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #3498db;
+}
+
+.bloc-activity .activity-date{
+    font-size: 12px;
+    font-style: italic;
+}
+
+.bloc-activity .activity-description{
+    font-size: 14px;
+}
+
+.bloc-activity{
+    width: 50%;
+    margin: auto;
+    margin-top: 30px;
+    padding: 1%;
+    padding-left: 2%;
+    border-radius: 10px;
+}
+
+.bloc-activity .informations{
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+}
+
+.bloc-activity .informations div{
+    width: 15%;
+}
