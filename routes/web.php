@@ -39,5 +39,6 @@ Route::get('statistiques/profile/{ident}', [App\Http\Controllers\ProfileControll
 Route::post('statistiques/profile/{ident}', [App\Http\Controllers\ProfileController::class, 'followProfil'])->name('stats-profile-follow');
 
 //Activity
-Route::get('/get/activity/{ident?}', [App\Http\Controllers\ActivityController::class, 'getActivity'])->name('activity-get');
+Route::get('/edit/activity/{ident?}', [App\Http\Controllers\ActivityController::class, 'editActivity'])->name('activity-edit');
+Route::get('/get/activity/{ident}', [App\Http\Controllers\ActivityController::class, 'getActivity'])->name('activity-get');
 Route::post('/set/activity/{ident?}', [App\Http\Controllers\ActivityController::class, 'setActivity'])->name('activity-set');

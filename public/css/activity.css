@@ -1,0 +1,95 @@
+.activity-informations{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    width: 100%;
+}
+
+.activity-informations{
+    margin-top: 20px;
+}
+
+.numeric{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-right: auto;
+}
+
+.lyrics{
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    width: 100%;
+}
+
+.lyric-informations{
+    display: flex;
+    flex-direction: column;
+}
+
+.activity-informations .lyrics, .activity-informations .numeric{
+    width: 40%;
+    margin-top: 20px;
+}
+
+.logo{
+    width: 40%;
+}
+
+.logo img{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.activity-name{
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.activity-date{
+    font-size: 12px;
+    font-style: italic;
+}
+
+.activity-description{
+    font-size: 14px;
+}
+
+.lyric-informations div{
+    line-height: 40px;
+}
+
+.activity-stats{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #3498db;;
+}
+
+.activity-distance, .activity-duration, .activity-average-speed{
+    font-size: 20px;
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+}
+
+.activity-edit{
+    color: #3498db;
+    background-color: #fff;
+    text-align: center;
+    font-size: 1.8em;
+    border-radius: 10px;
+    padding: 0.4em 0.8em;
+    border: 2px solid #3498db;
+    width: 40%;
+}
+
+.activity-edit:hover{
+    color: #fff;
+    background-color: #3498db;
+}
+
+.lyric-informations{
+    width: 80%;
+}

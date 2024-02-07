@@ -115,7 +115,7 @@ class ProfileController extends Controller
         }       
 
         // Retourne la vue
-        return view('profile', compact('user'))->with('success', 'Profil mis à jour avec succès');
+        return view('settings', compact('user'))->with('success', 'Profil mis à jour avec succès');
     }
 
     // Affichage des statistiques du profile (public)

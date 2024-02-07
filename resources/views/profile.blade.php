@@ -50,7 +50,7 @@
                         <div class="informations">
                         <?php
                             $duration = \Carbon\CarbonInterval::seconds($activity->duration)->cascade();
-                            $formattedDuration = $duration->hours > 0 ? $duration->format('%H:%I:%S') : $duration->format('%I:%S');
+                            $formattedDuration = $duration->hours > 0 ? $duration->format('%Hh %Imin %Ss') : $duration->format('%Imin %Ss');
                         ?>
                             <div class="activity-distance">{{ $activity->distance }} km</div>
                             <div class="activity-average-speed">{{ \Carbon\CarbonInterval::seconds($activity->duration / $activity->distance)->cascade()->format('%I:%S') }} / km</div>

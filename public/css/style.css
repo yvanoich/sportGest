@@ -13,6 +13,7 @@ body{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     padding-bottom: 50px;
+    border-radius: 10px;
 }
 
 .row{
@@ -158,6 +159,10 @@ form textarea{
     display: flex;
     flex-direction: row;
     margin-top: 15px;
+}
+
+.activity-duration{
+    width: 20% !important;
 }
 
 .bloc-activity .informations div{
