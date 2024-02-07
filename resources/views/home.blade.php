@@ -13,7 +13,7 @@
                 <img src="{{ file_exists(public_path('images/profiles/' . $activity->user->ident . '.jpg')) ? asset('images/profiles/' . $activity->user->ident . '.jpg') : asset('images/profiles/icone_user.jpg') }}" alt="Image de profil">
             </div>
             <div class="activity-right">
-                <div class="activity-util">{{ $activity->user->name }}</div>
+                <div class="activity-util"><a href="{{ route('stats-profile-get', ['ident' => $activity->user->ident]) }}">{{ $activity->user->name }}</a></div>
                 <div class="activity-date">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->date)->locale('fr_FR')->format('d M Y à H:i') }}</div>
                 <div class="activity-name"><a href="{{ route('activity-get', ['ident' => $activity->ident]) }}">{{ $activity->name }}</a></div>
                 @if($activity->description)

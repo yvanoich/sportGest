@@ -7,10 +7,6 @@ body{
     width: 100%;
 }
 
-.container.home .container-middle{
-    width: 50%;
-}
-
 .container-middle{
     width: 75%;
     margin: auto;
@@ -126,6 +122,12 @@ form textarea{
     font-size: 16px;
 }
 
+.activity-util a{
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
+}
+
 .bloc-activity .activity-name a{
     text-decoration: none;
     font-size: 24px;
@@ -149,6 +151,7 @@ form textarea{
     padding: 1%;
     padding-left: 2%;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .bloc-activity .informations{

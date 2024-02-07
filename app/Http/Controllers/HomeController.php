@@ -29,8 +29,16 @@ class HomeController extends Controller
         // Vérification sur la connexion
         $user=$this->getConnect();
 
-        // Récupération des activités de l'utilisateur connecté
-        $activitys = Activity::with('user')->orderBy('created_at', 'desc')->get();
+        // Récupération des activités de l'utilisateur connecté et de ses followers
+        $activitys = Activity::with('user')
+            ->where(function ($query) use ($user) {
+                $query->where('util', $user->ident)
+                    ->orWhereIn('util', function ($subQuery) use ($user) {
+                        $subQuery->select('followed')->from('followers')->where('util', $user->ident);
+                    });
+            })
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         // Retour de la vue avec les données récupéré plus haut
         return view('home', compact('user', 'activitys'));

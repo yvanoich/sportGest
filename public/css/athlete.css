@@ -1,0 +1,123 @@
+.athlete-informations{
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+}
+
+.athlete-activitys{
+    margin-top: 100px;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.athlete-informations .left{
+    width: 25%;
+}
+
+.athlete-informations .right{
+    width: 75%;
+}
+
+.athlete-activitys .left{
+    width: 60%;
+}
+
+.athlete-activitys .right{
+    width: 40%;
+    padding-left: 2%;
+}
+
+.athlete-logo{
+    text-align: center;
+}
+
+.athlete-logo label{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.athlete-logo img, .athlete-logo{
+    width: 200px;
+}
+
+.athlete-logo img{
+    object-fit: cover;
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+.athlete-informations .informations{
+    margin-top: 10px;
+}
+
+.athlete-informations .informations label{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.athlete-title{
+    font-weight: bold;
+    font-size: 24px;
+    color: #3498db;
+}
+
+.bloc-activity{
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    padding-left: 1%;
+}
+
+.athlete-average{
+    margin-top: 30px;
+    font-size: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 1%;
+}
+
+.athlete-average .group-value, .athlete-average .group-title{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.athlete-average .group-value div, .athlete-average .group-title div, .athlete-average .title{
+    border-bottom: 0.5px solid #3498db;
+    line-height: 40px;
+}
+
+.athlete-average .title{
+    font-weight: bold;
+}
+
+.athlete-average .group{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.athlete-informations button{
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 0.4em;
+    background-color: #3498db;
+    color: #ffffff;
+}
+
+.abo{
+    color: #3498db !important;
+    background-color: #ffffff !important;
+    border: 2px solid #3498db;
+}
+
+.abo:hover{
+    background-color: #3498db !important;
+    color: #ffffff !important;
+}

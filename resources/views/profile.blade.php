@@ -2,111 +2,81 @@
 
 @section('styles')
     <!-- Vos styles spécifiques pour cette vue -->
-    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/athlete.css') }}">
 @endsection
 
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Modifier vos informations') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('profile-set') }}" enctype="multipart/form-data">
+    <div class="athlete-informations">
+        <div class="left">
+            <div class="athlete-logo">
+                <img src="{{ file_exists(public_path('images/profiles/' . $user->ident . '.jpg')) ? asset('images/profiles/' . $user->ident . '.jpg') : asset('images/profiles/icone_user.jpg') }}" alt="Image de profil">
+                <br/>
+                <label>{{ $user->name }}</label>
+                @if($userConnect->ident!=$user->ident)
+                    <form method="POST" action="{{ route('stats-profile-follow', ['ident' => $user->ident]) }}">
                         @csrf
-
-                        <?php
-                            $profileImagePath = public_path('images/profiles/' . $user->ident.'.jpg');
-                        ?>
-
-                        <div class="profile-image" style="@if(!is_file($profileImagePath)) display:none; @endif">
-                            @if (is_file($profileImagePath))
-                                <!-- Afficher l'image existante -->
-                                <img id="existingImage" src="{{ asset('images/profiles/' . $user->ident.'.jpg') }}" alt="Image de profil">
-                            @endif
-
-                            <!-- Afficher l'image prévisualisée -->
-                            <img id="previewImage" style="display: none;" alt="Aperçu de l'image">
-                        </div>
-
-                        <!-- Champ d'input pour téléverser une nouvelle image -->
-                        <div class="input-file-container">  
-                            <input class="input-file" id="profileImageInput" type="file" name="profile_image" onchange="readURL(this);">
-                            <label tabindex="0" for="profileImageInput" class="input-file-trigger">Choisir un fichier...</label>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Pseudo') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}" required autocomplete="name">
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Adresse e-mail') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Mot de passe') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirmation mot de passe') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                @if(isset($success))
-                                    <div class="success-msg">{{ $success }}</div>
-                                @endif
-                                @if ($errors->any())
-                                    <div class="alert alert-danger">
-                                        <ul>
-                                            @foreach ($errors->all() as $error)
-                                                <li>{{ $error }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                @endif
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Mettre à jour') }}
-                                </button>
-                            </div>
-                        </div>
+                        
+                        @if($isFollowed)
+                            <button class="abo" type="submit">Se désabonner</button>
+                        @else
+                            <button class="not-abo" type="submit">S'abonner</button>
+                        @endif
                     </form>
+                @endif
+            </div>
+        </div>
+        <div class="right">
+
+        </div>
+    </div>
+    <div class="athlete-activitys">
+        <div class="left">
+            <label class="athlete-title">{{ __('Ativités') }}</label>
+            @foreach ($activitys as $activity)
+                <div class="bloc-activity">
+                    <div class="activity-logo">
+                        <img src="{{ file_exists(public_path('images/profiles/' . $activity->user->ident . '.jpg')) ? asset('images/profiles/' . $activity->user->ident . '.jpg') : asset('images/profiles/icone_user.jpg') }}" alt="Image de profil">
+                    </div>
+                    <div class="activity-right">
+                        <div class="activity-util"><a href="{{ route('stats-profile-get', ['ident' => $activity->user->ident]) }}">{{ $activity->user->name }}</a></div>
+                        <div class="activity-date">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->date)->locale('fr_FR')->format('d M Y à H:i') }}</div>
+                        <div class="activity-name"><a href="{{ route('activity-get', ['ident' => $activity->ident]) }}">{{ $activity->name }}</a></div>
+                        @if($activity->description)
+                            <div class="activity-description">{{ $activity->description }}</div>
+                        @endif
+                        <div class="informations">
+                        <?php
+                            $duration = \Carbon\CarbonInterval::seconds($activity->duration)->cascade();
+                            $formattedDuration = $duration->hours > 0 ? $duration->format('%H:%I:%S') : $duration->format('%I:%S');
+                        ?>
+                            <div class="activity-distance">{{ $activity->distance }} km</div>
+                            <div class="activity-average-speed">{{ \Carbon\CarbonInterval::seconds($activity->duration / $activity->distance)->cascade()->format('%I:%S') }} / km</div>
+                            <div class="activity-duration">{{ $formattedDuration }}</div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+        <div class="right">
+            <label class="athlete-title">{{ __('Statistiques') }}</label>
+            <div class="athlete-average">
+                <div class="title">4 dernières semaines</div>
+                <div class="group">
+                    <div class="group-title">
+                        <div>Activités / semaine</div>
+                        <div>Distance / semaine</div>
+                        <div>Durée / semaine</div>
+                        <div>Dénivelé / semaine</div>
+                    </div>
+                    <div class="group-value">
+                        <div>{{ $average["nbreActivity"] }}</div>
+                        <div>{{ $average["distance"] }}</div>
+                        <div>{{ $average["duration"] }}</div>
+                        <div>{{ $average["height"] }}</div>
+                    </div>
                 </div>
             </div>
         </div>

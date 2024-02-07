@@ -33,8 +33,10 @@ Auth::routes();
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //page profil
-Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'getProfile'])->name('profile');
-Route::post('/profile', [App\Http\Controllers\ProfileController::class, 'setProfile'])->name('profile-set');
+Route::get('/settings/profile', [App\Http\Controllers\ProfileController::class, 'getSettingsProfile'])->name('settings-profile');
+Route::post('/settings/profile', [App\Http\Controllers\ProfileController::class, 'setProfile'])->name('profile-set');
+Route::get('statistiques/profile/{ident}', [App\Http\Controllers\ProfileController::class, 'getProfile'])->name('stats-profile-get');
+Route::post('statistiques/profile/{ident}', [App\Http\Controllers\ProfileController::class, 'followProfil'])->name('stats-profile-follow');
 
 //Activity
 Route::get('/get/activity/{ident?}', [App\Http\Controllers\ActivityController::class, 'getActivity'])->name('activity-get');
