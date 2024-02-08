@@ -16,7 +16,7 @@
                     <img src="{{ file_exists(public_path('images/profiles/' . $activity->user->ident . '.jpg')) ? asset('images/profiles/' . $activity->user->ident . '.jpg') : asset('images/profiles/icone_user.jpg') }}" alt="Image de profil">
                 </div>
                 <div class="lyric-informations">
-                    <div class="activity-date">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->date)->locale('fr_FR')->format('d M Y à H:i') }}</div>
+                    <div class="activity-date">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->date)->locale('fr_FR')->isoFormat('dddd D MMMM YYYY à HH:mm') }}</div>
                     <div class="activity-name">{{ $activity->name }}</div>
                     <div class="activity-description">{{ $activity->description }}</div>
                     @if($user->ident==$activity->util)

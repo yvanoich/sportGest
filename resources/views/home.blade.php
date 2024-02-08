@@ -14,7 +14,7 @@
             </div>
             <div class="activity-right">
                 <div class="activity-util"><a href="{{ route('stats-profile-get', ['ident' => $activity->user->ident]) }}">{{ $activity->user->name }}</a></div>
-                <div class="activity-date">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->date)->locale('fr_FR')->format('d M Y à H:i') }}</div>
+                <div class="activity-date">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->date)->locale('fr_FR')->isoFormat('dddd D MMMM YYYY à HH:mm') }}</div>
                 <div class="activity-name"><a href="{{ route('activity-get', ['ident' => $activity->ident]) }}">{{ $activity->name }}</a></div>
                 @if($activity->description)
                     <div class="activity-description">{{ $activity->description }}</div>

@@ -51,8 +51,16 @@
                 <div class="row-item">
                     <label for="duration" class="col-md-4 col-form-label text-md-end">{{ __('Durée (s)') }}</label>
 
-                    <div class="col-md-6">
-                        <input id="duration" type="text" class="form-control @error('duration') is-invalid @enderror" name="duration" value="{{ $activity->duration ?? '' }}" required placeholder="250">
+                    <div class="activity-set-duration">
+                        <div class="duration-input">
+                            <input id="hours" type="text" class="form-control @error('hours') is-invalid @enderror" name="hours" value="{{ $hours ?? '' }}" placeholder="Heure(s)">
+                        </div>
+                        <div class="duration-input">
+                            <input id="minutes" type="text" class="form-control @error('minutes') is-invalid @enderror" name="minutes" value="{{ $minutes ?? '' }}" placeholder="minute(s)">
+                        </div>
+                        <div class="duration-input">
+                            <input id="secondes" type="text" class="form-control @error('secondes') is-invalid @enderror" name="secondes" value="{{ $secondes ?? '' }}" placeholder="seconde(s)">
+                        </div>
                     </div>
                 </div>
                 <div class="row-item">

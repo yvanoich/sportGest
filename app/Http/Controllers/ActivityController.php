@@ -8,16 +8,22 @@ use App\Models\Activity;
 
 class ActivityController extends Controller
 {
+    // Affiche l'aperçu d'une activité
     public function getActivity($ident){
+
         // Vérification de la connexion
         $user=$this->getConnect();
 
+        // Récupère l'activité sélectionné
         $activity=Activity::where('ident', '=', $ident)->firstOrFail();
 
+        // Retour de la vue
         return view('activity', compact('user', 'activity'));
     }
 
+    // Affiche le formulaire de création/modification d'une activité
     public function editActivity($ident = null){
+
         // Vérification de la connexion
         $user=$this->getConnect();
 
@@ -25,9 +31,14 @@ class ActivityController extends Controller
         $activity=null;
         $date=null;
         $time=null;
-        if($ident!=""){
+        $hours=null;
+        $minutes=null;
+        $econdes=null;
+        if($ident){
+            // Récupère l'activité sélectionné
             $activity=Activity::where('ident', '=', $ident)->firstOrFail();
 
+            // Si l'ativité n'est pas celle de l'utilisateur connecté retourne sur l'aperçu avec une erreur
             if($activity->util!=$user->ident)
                 return redirect('/get/activity/'.$ident)->withErrors(['error' => 'Vous n\'avez pas accès a cette page.']);
 
@@ -35,69 +46,74 @@ class ActivityController extends Controller
             list($datePart, $timePart) = explode(' ', $activity->date);
             $date=$datePart;
             $time=date('H:i', strtotime($timePart));
+
+            // Récupère les données heures, minutes, secondes
+            $hours = floor($activity->duration / 3600);
+            $minutes = floor(($activity->duration % 3600) / 60);
+            $secondes = $activity->duration % 60;
         }
 
         // Récupération de liste des sports
         $sports=Sport::all();
 
-        return view('editActivity', compact("sports", 'activity', 'date', 'time'));
+        // Retourne la vue
+        return view('editActivity', compact("sports", 'activity', 'date', 'time', 'hours', 'minutes', 'secondes'));
     }
 
+    // Créée / modifie l'activité
     public function setActivity(Request $request, $ident = null){
+
         // Vérification de la connexion
         $user=$this->getConnect();
 
         // Instancie une activité
         $activity=new Activity();
-        $activity->util=$user->ident;
-        if($ident!="")
+        if($ident)
             $activity=Activity::where('ident', '=', $ident)->firstOrFail();
+        else
+            $activity->util=$user->ident;
 
-        // Vérification des données obligatoire
+        // Vérification des données
         $request->validate([
             'name'      => ['required', 'string', 'max:100'],
             'distance'  => ['required', 'numeric', 'regex:/^\d{1,6}([.,]\d{1,2})?$/'],
-            'duration'  => ['required', 'int'],
             'sport'     => ['required', 'exists:sport,ident'],
             'date'      => ['required', 'date'],
-            'time'      => ['required', 'date_format:H:i']
+            'time'      => ['required', 'date_format:H:i'],
+            'height'    => ['nullable', 'integer'],
+            'description'    => ['required', 'string', 'max:5000'],
         ]);
 
-        // Ajout des informations obligatoire
+        // Vérification sur la durée
+        $request->validate([
+            'hours'   => ['nullable', 'integer'],
+            'minutes' => ['nullable', 'integer'],
+            'secondes' => ['nullable', 'integer'],
+        ], [
+            'required' => 'Au moins un champ (heures, minutes, secondes) doit être renseigné.',
+            'integer'  => 'Les champs doivent être des entiers.',
+        ]);
+
+        // Calcul de la durée de l'activité
+        $hours = $request->input('hours', 0);
+        $minutes = $request->input('minutes', 0);
+        $secondes = $request->input('secondes', 0);
+        $duration = ($hours * 3600) + ($minutes * 60) + $secondes;
+        
+
+        // Ajout des informations
         $activity->name=$request->input("name");
         $activity->distance=$request->input("distance");
-        $activity->duration=$request->input("duration");
+        $activity->duration=$duration;
         $activity->sport=$request->input("sport");
         $activity->date=$request->input("date")." ".$request->input("time");
-
-        // Vérification des données optionnel + ajout à l'activité
-        if($request->input("height")){
-            $request->validate([
-                'height'    => ['required', 'int'],
-            ]);
-
-            // Ajout du dénivelé
-            $activity->height=$request->input("height");
-        }
-        else
-            $activity->height=null;
-
-        if($request->input("description")){
-            $request->validate([
-                'description'    => ['required', 'string', 'max:5000'],
-            ]);
-
-            // Ajout de la description
-            $activity->description=$request->input("description");
-        }
-        else
-            $activity->description="";
+        $activity->height=($request->input("height") && $request->input("height")!="" ? $request->input("height") : null);
+        $activity->description=($request->input("description") && $request->input("description")!="" ? $request->input("description") : null);
 
         // Enregistrement en base de l'activité
         $activity->save();
 
-        if($ident!="")
-            return $this->getActivity($ident);
-        return redirect('/dashboard');
+        // Si l'activité existe déjà retourner sur son aperçu
+        return redirect('/get/activity/'.$activity->ident);
     }
 }

@@ -1,3 +1,8 @@
+input{
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .athlete-informations{
     width: 75%;
     display: flex;
@@ -48,6 +53,7 @@
     object-fit: cover;
     height: 200px;
     margin-bottom: 10px;
+    border-radius: 10px;
 }
 
 .athlete-informations .informations{

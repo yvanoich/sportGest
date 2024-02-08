@@ -2,6 +2,11 @@ body{
     padding-bottom: 75px;
 }
 
+input{
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .container{
     margin-top: 75px;
     width: 100%;
@@ -181,4 +186,15 @@ form textarea{
     width: 60px;
     height: 60px;
     object-fit: cover;
+    border-radius: 10px;
+}
+
+.activity-set-duration{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.duration-input{
+    width: 33%;
 }

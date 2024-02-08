@@ -23,9 +23,9 @@
                     @auth
                         <li><a href="{{ url('/dashboard') }}" class="logo">SportGest</a></li>
                         <!-- Liens à gauche de la barre de navigation -->
-                        <li class="{{ request()->is('dashboard') ? 'active' : '' }}"><a href="{{ url('/dashboard') }}">Accueil</a></li>
-                        <li class="{{ request()->is('statistiques/profile/'. Auth::user()->ident) ? 'active' : '' }}"><a href="{{ url('/statistiques/profile/'. Auth::user()->ident) }}">{{ Auth::user()->name }}</a></li>
-                        <li class="{{ request()->is('settings/profile') ? 'active' : '' }}"><a href="{{ url('/settings/profile') }}">Paramètres</a></li>
+                        <li class="{{ request()->is('dashboard') ? 'active' : '' }}"><a href="{{ route('home') }}">Accueil</a></li>
+                        <li class="{{ request()->is('statistiques/profile/'. Auth::user()->ident) ? 'active' : '' }}"><a href="{{ route('stats-profile-get', ['ident' => Auth::user()->ident]) }}">{{ Auth::user()->name }}</a></li>
+                        <li class="{{ request()->is('settings/profile') ? 'active' : '' }}"><a href="{{ route('settings-profile') }}">Paramètres</a></li>
                         <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Se déconnecter</a></li>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
@@ -38,7 +38,7 @@
                 </ul>
             </nav>
             @auth
-                <a class="add-activity" href="{{ url('/get/activity') }}">+ Ajouter une activités</a>
+                <a class="add-activity" href="{{ route('activity-edit') }}">+ Ajouter une activités</a>
             @endauth
         </div>
 
