@@ -11,10 +11,9 @@
     <div class="bloc-activity">
         <div class="activity-logo">
             <img src="{{ file_exists(public_path('images/profiles/' . $activity->user->ident . '.jpg')) ? asset('images/profiles/' . $activity->user->ident . '.jpg') : asset('images/profiles/icone_user.jpg') }}" alt="Image de profil">
+            <br />
+            <img class="img-sport" src="{{ asset('images/sport/' . $activity->sport . '.png') }}">
         </div>
-        <svg style="width:24px;height:24px" viewBox="0 0 24 24">
-            <path fill="#000000" d="M ... Z" /> <!-- account -->
-        </svg>
         <div class="activity-right">
             <div class="activity-util"><a href="{{ route('stats-profile-get', ['ident' => $activity->user->ident]) }}">{{ $activity->user->name }}</a></div>
             <div class="activity-date">{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $activity->date)->locale('fr_FR')->isoFormat('dddd D MMMM YYYY à HH:mm') }}</div>

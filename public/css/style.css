@@ -219,3 +219,9 @@ form textarea {
 .private-informations .difficulty-note {
     width: 50%;
 }
+
+.img-sport {
+    width: 30px !important;
+    height: 30px !important;
+    margin-left: 8%;
+}

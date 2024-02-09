@@ -36,7 +36,7 @@ class ActivityController extends Controller
         $time = null;
         $hours = null;
         $minutes = null;
-        $econdes = null;
+        $secondes = null;
         if ($ident) {
             // Récupère l'activité sélectionné
             $activity = Activity::where('ident', '=', $ident)->firstOrFail();
