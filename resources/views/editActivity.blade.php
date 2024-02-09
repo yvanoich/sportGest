@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('styles')
-    <!-- Vos styles spécifiques pour cette vue -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<!-- Vos styles spécifiques pour cette vue -->
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 @endsection
 
 
@@ -74,10 +74,10 @@
 
             <div class="row">
                 <div class="row-item">
-                <label for="sport" class="col-md-4 col-form-label text-md-end">{{ __('Sport') }}</label>
+                    <label for="sport" class="col-md-4 col-form-label text-md-end">{{ __('Sport') }}</label>
                     <select name="sport">
                         @foreach ($sports as $sport)
-                            <option value="{{ $sport->ident }}" @if(optional($activity)->sport == $sport->ident) selected @endif >{{ $sport->libelle }}</option>
+                        <option value="{{ $sport->ident }}" @if(optional($activity)->sport == $sport->ident) selected @endif >{{ $sport->libelle }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -85,7 +85,7 @@
 
             <div class="row">
                 <div class="row-textarea">
-                    <label for="distance" class="col-md-4 col-form-label text-md-end">{{ __('Description') }}</label>
+                    <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('Description') }}</label>
                     <div class="col-md-6">
                         <textarea name="description">{{ $activity->description ?? '' }}</textarea>
                     </div>
@@ -93,53 +93,67 @@
             </div>
 
             <div class="row">
+                <div class="private-informations">
+                    <div class="row-textarea">
+                        <label for="private-description" class="col-md-4 col-form-label text-md-end">{{ __('Note privé') }}</label>
+                        <div class="col-md-6">
+                            <textarea name="private-description">{{ $activity->privateDescription ?? '' }}</textarea>
+                        </div>
+                    </div>
+                    <div class="difficulty-note">
+                        <!--<label for="difficulty" class="col-md-4 col-form-label text-md-end">{{ __('Ressentit') }}</label>-->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
                 <div class="form-submit">
                     @error('name')
-                        <div class="invalid-feedback error-msg" role="alert">
-                            Nom incorrect.
-                        </div>
+                    <div class="invalid-feedback error-msg" role="alert">
+                        Nom incorrect.
+                    </div>
                     @enderror
 
                     @error('date')
-                        <div class="invalid-feedback error-msg" role="alert">
-                            Date incorrect.
-                        </div>
+                    <div class="invalid-feedback error-msg" role="alert">
+                        Date incorrect.
+                    </div>
                     @enderror
 
                     @error('time')
-                        <div class="invalid-feedback error-msg" role="alert">
-                            Heure incorrect.
-                        </div>
+                    <div class="invalid-feedback error-msg" role="alert">
+                        Heure incorrect.
+                    </div>
                     @enderror
 
                     @error('distance')
-                        <div class="invalid-feedback error-msg" role="alert">
-                            Distance incorrecte.
-                        </div>
+                    <div class="invalid-feedback error-msg" role="alert">
+                        Distance incorrecte.
+                    </div>
                     @enderror
-                    
+
                     @error('duration')
-                        <div class="invalid-feedback error-msg" role="alert">
-                            Durée incorrecte.
-                        </div>
+                    <div class="invalid-feedback error-msg" role="alert">
+                        Durée incorrecte.
+                    </div>
                     @enderror
 
                     @error('height')
-                        <div class="invalid-feedback error-msg" role="alert">
-                            Dénivelé incorrecte.
-                        </div>
+                    <div class="invalid-feedback error-msg" role="alert">
+                        Dénivelé incorrecte.
+                    </div>
                     @enderror
 
                     @error('sport')
-                        <div class="invalid-feedback error-msg" role="alert">
-                            Sport incorrect.
-                        </div>
+                    <div class="invalid-feedback error-msg" role="alert">
+                        Sport incorrect.
+                    </div>
                     @enderror
 
                     @error('description')
-                        <div class="invalid-feedback error-msg" role="alert">
-                            Description incorrect.
-                        </div>
+                    <div class="invalid-feedback error-msg" role="alert">
+                        Description incorrect.
+                    </div>
                     @enderror
                     <button type="submit" class="btn btn-primary">
                         {{ optional($activity)->ident ? __('Mettre à jour') : __('Créer') }}

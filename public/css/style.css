@@ -1,18 +1,18 @@
-body{
+body {
     padding-bottom: 75px;
 }
 
-input{
+input {
     padding: 0;
     box-sizing: border-box;
 }
 
-.container{
+.container {
     margin-top: 75px;
     width: 100%;
 }
 
-.container-middle{
+.container-middle {
     width: 75%;
     margin: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -21,7 +21,7 @@ input{
     border-radius: 10px;
 }
 
-.row{
+.row {
     display: flex;
     flex-direction: row;
     width: 80%;
@@ -29,7 +29,9 @@ input{
     margin-top: 25px;
 }
 
-form input, form textarea, form select{
+form input,
+form textarea,
+form select {
     width: 100%;
     height: 30px;
     border-radius: 0.4em;
@@ -37,16 +39,16 @@ form input, form textarea, form select{
     border-color: #3498db;
 }
 
-form input:focus{
+form input:focus {
     border-color: #2980b9;
 }
 
-form label{
+form label {
     color: #3498db;
     font-size: 20px;
 }
 
-.card-header{
+.card-header {
     width: 80%;
     margin: auto;
     font-size: 26px;
@@ -55,11 +57,12 @@ form label{
     color: #3498db;
 }
 
-.col-md-6{
+.col-md-6 {
     width: 100%;
 }
 
-.row-item, .row-item-title{
+.row-item,
+.row-item-title {
     width: 28%;
     padding-left: 4%;
     padding-right: 4%;
@@ -67,29 +70,32 @@ form label{
     padding-bottom: 2%;
 }
 
-.row-item-title{
+.row-item-title {
     width: 64%;
 }
 
-.container-date .bloc-date, .container-date .bloc-time{
+.container-date .bloc-date,
+.container-date .bloc-time {
     width: 50%;
 }
 
-.container-date{
+.container-date {
     display: flex;
     flex-direction: row;
     margin: auto;
 }
 
-.container-date input{
+.container-date input {
     width: 80%;
 }
 
-.container-date .last-input, .container-date .last-label{
+.container-date .last-input,
+.container-date .last-label {
     margin-left: 20%;
 }
 
-.row-textarea{
+.row-textarea,
+.difficulty-note {
     width: 100%;
     padding-left: 4%;
     padding-right: 4%;
@@ -97,60 +103,60 @@ form label{
     padding-bottom: 2%;
 }
 
-form textarea{
+form textarea {
     height: 150px;
 }
 
-.form-submit{
+.form-submit {
     margin: auto;
     width: 45%;
 }
 
-.form-submit button{
+.form-submit button {
     width: 100%;
     border-radius: 0.4em;
     background-color: #3498db;
     color: #ffffff;
 }
 
-.bloc-activity{
+.bloc-activity {
     display: flex;
     flex-direction: row;
     font-size: 20px;
     background-color: #fff;
 }
 
-.bloc-activity div{
+.bloc-activity div {
     margin-top: 5px;
 }
 
-.bloc-activity .activity-util{
+.bloc-activity .activity-util {
     font-size: 16px;
 }
 
-.activity-util a{
+.activity-util a {
     text-decoration: none;
     font-weight: bold;
     color: #000;
 }
 
-.bloc-activity .activity-name a{
+.bloc-activity .activity-name a {
     text-decoration: none;
     font-size: 24px;
     font-weight: bold;
     color: #3498db;
 }
 
-.bloc-activity .activity-date{
+.bloc-activity .activity-date {
     font-size: 12px;
     font-style: italic;
 }
 
-.bloc-activity .activity-description{
+.bloc-activity .activity-description {
     font-size: 14px;
 }
 
-.bloc-activity{
+.bloc-activity {
     width: 50%;
     margin: auto;
     margin-top: 30px;
@@ -160,41 +166,56 @@ form textarea{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.bloc-activity .informations{
+.bloc-activity .informations {
     display: flex;
     flex-direction: row;
     margin-top: 15px;
 }
 
-.activity-duration{
+.activity-duration {
     width: 20% !important;
 }
 
-.bloc-activity .informations div{
+.bloc-activity .informations div {
     width: 15%;
 }
 
-.activity-logo{
+.activity-logo {
     width: 10%;
 }
 
-.activity-right{
+.activity-right {
     width: 90%;
 }
 
-.activity-logo img{
+.activity-logo img {
     width: 60px;
     height: 60px;
     object-fit: cover;
     border-radius: 10px;
 }
 
-.activity-set-duration{
+.activity-set-duration {
     display: flex;
     flex-direction: row;
     width: 100%;
 }
 
-.duration-input{
+.duration-input {
     width: 33%;
+}
+
+.activity-set-duration input {
+    text-align: center;
+}
+
+.private-informations {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.private-informations .row-textarea,
+.private-informations .difficulty-note {
+    width: 50%;
 }

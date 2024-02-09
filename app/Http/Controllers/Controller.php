@@ -13,9 +13,10 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     // Vérification si l'utilisateur est connecté
-    public function getConnect(){
+    public function getConnect()
+    {
         // Vérification de la connection
-        if($user=Auth::user())
+        if ($user = Auth::user())
             return $user;
 
         // Redirige l'utilisateur si il n'est pas connecté

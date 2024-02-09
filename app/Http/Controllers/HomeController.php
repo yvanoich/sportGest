@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         // Vérification sur la connexion
-        $user=$this->getConnect();
+        $user = $this->getConnect();
 
         // Récupération des activités de l'utilisateur connecté et de ses followers
         $activitys = Activity::with('user')

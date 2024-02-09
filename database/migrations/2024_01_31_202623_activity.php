@@ -24,6 +24,7 @@ class Activity extends Migration
             $table->string('sport', 32);
             $table->timestamp('date');
             $table->string('description', 5000)->nullable();
+            $table->string('privateDescription', 2000)->nullable();
             $table->timestamps();
 
             // Clé étrangère
